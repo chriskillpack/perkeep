@@ -70,7 +70,7 @@ func (t *StatsTransport) RoundTrip(req *http.Request) (resp *http.Response, err 
 	resp, err = rt.RoundTrip(req)
 	if t.VerboseLog {
 		t1 := time.Now()
-		td := t1.Sub(t1)
+		td := t1.Sub(t0)
 		if err == nil {
 			log.Printf("(%d) %s %s = status %d (in %v)", n, req.Method, req.URL, resp.StatusCode, td)
 			resp.Body = &logBody{body: resp.Body, n: n, t0: t0, t1: t1}
